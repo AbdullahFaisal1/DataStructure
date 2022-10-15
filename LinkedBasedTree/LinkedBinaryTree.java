@@ -19,4 +19,8 @@ public class LinkedBinaryTree<E> {
         }
         else return null;
     }
+
+    public static void main(String[] args) {
+        System.out.println("abdullah");
+    }
 }
