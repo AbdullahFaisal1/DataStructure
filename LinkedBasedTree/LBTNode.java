@@ -14,6 +14,12 @@ public class LBTNode <E> {
         x = y = 0;
     }
 
+    public LBTNode(E item){
+        parent = left = right = null;
+        item = null;
+        x = y = 0;
+    }
+
     public E getItem() {
         return item;
     }
@@ -61,7 +67,16 @@ public class LBTNode <E> {
     public void setY(int y) {
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "LBTNode [item=" + item + ", parent=" + parent + ", left=" + left + ", right=" + right + ", x=" + x
+                + ", y=" + y + "]";
+    }
     
+
+    
+
     
     
 }
