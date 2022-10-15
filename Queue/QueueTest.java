@@ -125,4 +125,16 @@ public class QueueTest {
         return q1;
     }
 
+    //new
+    public static<T> void teller(Queue<T> Q1, Queue<T> Q2){
+        int length1 = Q1.length();
+        for(int i=0; i<length1/2; i++){
+            Q1.enqueue(Q1.serve());
+        }
+        for(int i=0; i<length1/2;i++){
+            Q2.enqueue(Q1.serve());
+        }
+    }
+
+    
 }
