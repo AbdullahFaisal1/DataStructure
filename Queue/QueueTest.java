@@ -50,6 +50,24 @@ public class QueueTest {
 
         printQ(q);
 
+        //new
+        Queue<Integer> q1 = new Queue<>();
+        Queue<Integer> q2 = new Queue<>();
+        
+        q1.enqueue(1);
+        q1.enqueue(2);
+        q1.enqueue(3);
+        q1.enqueue(4);
+
+
+        printQ(q1);
+        printQ(q2);
+
+        teller(q1, q2);
+
+        printQ(q1);
+        printQ(q2);
+
     }
 
     public static <T> void printQ(Queue<T> qu){
