@@ -2,7 +2,7 @@ package ArrayBasedTree;
 // Array based tree 
 // we use recursion
 
-public class BinaryTree {
+public class ArrayBinaryTree {
     ABTNode root;
 
     public void insert(ABTNode n, int parentK){
@@ -79,14 +79,14 @@ public class BinaryTree {
         ABTNode b = new ABTNode('B',0);
         ABTNode c = new ABTNode('C',2);
         ABTNode d = new ABTNode('D',3);
-        BinaryTree t = new BinaryTree();
+        ArrayBinaryTree t = new ArrayBinaryTree();
 
         t.insert(a, 0);
         t.insert(b, 0);
         t.insert(c, 1);
         t.insert(d, 2);
 
-        t.printfromParent(a);
+        
 
         
     }
