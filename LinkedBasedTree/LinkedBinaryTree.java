@@ -1,5 +1,8 @@
 package LinkedBasedTree;
 
+import Queue.Queue;
+import Stacks.Stack;
+
 public class LinkedBinaryTree<E> {
     private LBTNode<E> root;
     private int size;
@@ -7,6 +10,14 @@ public class LinkedBinaryTree<E> {
     public LinkedBinaryTree(){
         root = null;
         size = 0;
+    }
+
+    public void setRoot(LBTNode<E> root){
+        this.root = root;
+    }
+
+    public LBTNode<E> getRoot(){
+        return root;
     }
 
     public boolean isRoot(LBTNode<E> node){
@@ -201,6 +212,164 @@ public class LinkedBinaryTree<E> {
         }
     }
 
+    //new Methods
+
+    public void preOrder(LBTNode<E> node){
+        if(node != null){
+            System.out.print(node + " ");
+            preOrder(left(node));
+            preOrder(right(node));
+        }
+    }
+
+    public void inOrder(LBTNode<E> node){
+        if(node != null){
+            inOrder(node.getLeft());
+            System.out.println(node + " ");
+            inOrder(node.getRight());
+        }
+    }
+
+    public void postOrder(LBTNode<E> node){
+        if(node != null){
+            postOrder(node);
+            postOrder(node);
+            System.out.println(node + " ");
+        }
+    }
+
+    public void breadthFrist(LBTNode<E> node){ //level counting
+        if(node != null){
+            Queue<LBTNode<E>> tg = new Queue<LBTNode<E>>();
+            tg.enqueue(node);
+            while(!tg.empty()){
+                LBTNode<E> temp = tg.serve();
+                if(temp != null){
+                    System.out.println(temp.getItem());
+
+                    if(temp.getLeft() != null){
+                        tg.enqueue(temp.getLeft());
+                    }
+                    if(temp.getRight() != null){
+                        tg.enqueue(temp.getRight());
+                    }
+                }
+            }
+        }
+    }
+
+    public String printExpression(LBTNode<Character> node){ //inOrder
+        String s = "";
+        LBTNode<Character> n = node;
+        if(node != null){
+
+            if(node.getLeft() != null){
+                s += "(";
+                s += printExpression(node.getLeft());
+            }
+
+            s += node.getItem();
+
+            if(node.getRight() != null){
+                s += printExpression(node.getRight());
+                s += ")";
+            }
+            
+        }
+        return s;
+    }
+
+    public int evalExpression(LBTNode<Character> node){ //inOrder
+        LBTNode<Character> n = node;
+        if(node != null){
+            if(node.getLeft() != null && node.getRight() != null){
+                return Character.getNumericValue(node.getItem());
+            }else{
+                int x = evalExpression(node.getLeft());
+                int y = evalExpression(node.getRight());
+                switch(node.getItem()){
+                    case '+':
+                        return x+y;
+                    case '-':
+                        return x-y;
+                    case '*':
+                        return x*y;
+                    case '/':
+                        return x/y;
+                    case '%':
+                        return x%y;
+                    default:
+                        return 0;
+                }
+            }
+        }else{
+            return 0;
+        }
+    }
+
+    public int depth(LBTNode<E> node){
+        if(node != null){
+            LBTNode<E> temp = node.getParent();
+            int d = 0;
+            while(temp != null){
+                d++;
+                temp = temp.getParent();
+            }
+            return d;
+        }else{
+            return -1;
+        }
+    }
+
+    public int inOrderRank(LBTNode<E> node, int x){
+        if(node != null){
+            if(left(node) != null)
+                x = inOrderRank(left(node), x);
+            x++;
+            if(right(node) != null)
+                x = inOrderRank(right(node), x);
+            return x;        
+        }else{
+            return x;
+        }
+    }
+
+    public LinkedBinaryTree<Character> postFixToExpTree(String s){
+        Stack<LBTNode<Character>> tstack = new Stack<>();
+        LinkedBinaryTree<Character> btc = new LinkedBinaryTree<>();
+        for(int i=0; i<s.length(); i++){
+            char curr = s.charAt(i);
+            switch(curr){
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '%':
+                    LBTNode<Character> op = new LBTNode<>();
+                    op.setItem(curr);
+                    op.setRight(tstack.pop());
+                    op.setLeft(tstack.pop());
+                    tstack.push(op);
+                    break;
+                default:
+                    LBTNode<Character> tn = new LBTNode<>();
+                    tn.setItem(curr);
+                    tstack.push(tn);    
+            }
+        }
+        btc.setRoot(tstack.pop());
+        return btc;
+    }
+
+    // public boolean attach(LBTNode<E> node, LinkedBinaryTree<E> t1, LinkedBinaryTree<E> t2){
+    //     if(node.getLeft() == null && node.getRight() == null){
+    //         node.setLeft();
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
+
 
     public static void main(String[] args) {
         System.out.println("abdullah");
@@ -211,8 +380,16 @@ public class LinkedBinaryTree<E> {
         LBTNode<Character> n4 = new LBTNode<>('D');
         LBTNode<Character> n5 = new LBTNode<>('E');
 
+        
         LinkedBinaryTree<Character> linkedTree = new LinkedBinaryTree<>();
+
         linkedTree.addRoot(n1.getItem());
+
+        linkedTree.addLeft(n1, n2.getItem());
+        linkedTree.addRight(n1, n3.getItem());
+
+        linkedTree.addLeft(n2, n4.getItem());
+
 
     }
 }
