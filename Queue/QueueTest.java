@@ -2,6 +2,8 @@ package Queue;
 
 import java.util.Stack;
 
+import javafx.scene.layout.StackPane;
+
 public class QueueTest {
     public static void main(String[] args) {
         // LinkedQueue<Integer> qu = new LinkedQueue<>();
@@ -114,9 +116,9 @@ public class QueueTest {
         }
         return data;
     }
-    
+
     public static <T> T frist(Queue q){
-        T data = (T) q.peak();
+        T data = (T) q.top();
         return data;
     }
 
@@ -155,5 +157,39 @@ public class QueueTest {
         }
     }
 
+    public static boolean isOperator(Character c){
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '(' || c == ')'; 
+    }
+
+    public static int operatorPriority(Character c){
+        if(c == '^') return 3;
+        else if(c == '*' || c == '/') return 2;
+        else if(c == '+' || c == '-') return 1;
+
+        return -1;
+    }
+
+    // public static Queue<Character> infixToPostfix(Queue<Character> inFix){
+    //     Queue<Character> postFix = new Queue<>();
+    //     QStack<Character> opStack = new QStack<>();
+
+    //     while(!inFix.empty()){
+    //         Character val = inFix.serve();
+
+    //         if(isOperator(val)){
+    //             if(opStack.isEmpty() || opStack.top() == '(')
+    //                 opStack.push(val);
+    //             else if(val == '(')
+    //                 opStack.push(val);
+    //             else if(val == ')'){
+    //                 while
+    //             }    
+    //         }else{
+    //             postFix.enqueue(val);
+    //         }
+    //     }
+        
+    //     return postFix;
+    // }
     
 }

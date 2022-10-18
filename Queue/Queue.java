@@ -65,7 +65,7 @@ public class Queue<T> {
         System.out.println();
     }
 
-    public T peak(){
+    public T top(){
         return front.data;
     }
 
