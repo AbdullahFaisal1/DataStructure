@@ -114,6 +114,7 @@ public class QueueTest {
         }
         return data;
     }
+    
     public static <T> T frist(Queue q){
         T data = (T) q.peak();
         return data;

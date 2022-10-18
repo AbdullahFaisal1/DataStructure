@@ -50,7 +50,6 @@ public class StackTest {
             Stack<E> temp = new Stack<>();
             while(!original.isEmpty()){
                 E val = original.pop();
-
                 if(val.equals(oldElement))
                     val = newElement;
 

@@ -71,7 +71,7 @@ public class Stack<T>{
 
     public void printList3(){
         Stack<T> x = this;
-        Stack<T> temp = new Stack();
+        Stack<T> temp = new Stack<>();
         temp = x;
 
         while(!temp.isEmpty()){
