@@ -57,9 +57,13 @@ public class BSTree <K extends Comparable<K>, E> {
             return null;
         else{
             E removedData = trav.getData();
-            deleteNode(trav, parent);
+            //deleteNode(trav, parent);
             return removedData;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("hello world");
     }
     
 }
