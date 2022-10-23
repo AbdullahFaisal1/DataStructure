@@ -1,20 +1,20 @@
 package BinarySearchTree;
 
-public class BSTNode<K, T> {
+public class BSTNode<K, E> {
     private K key;
-    private T data;
-    private BSTNode<K,T> left;
-    private BSTNode<K,T> right;
+    private E data;
+    private BSTNode<K,E> left;
+    private BSTNode<K,E> right;
 
     public BSTNode(){
         left = right = null;
     }
-    public BSTNode(K key, T data){
+    public BSTNode(K key, E data){
         this.key = key;
         this.data = data;
         left = right = null;
     }
-    public BSTNode(K key, T data, BSTNode<K,T> left, BSTNode<K,T> right){
+    public BSTNode(K key, E data, BSTNode<K,E> left, BSTNode<K,E> right){
         this.key = key;
         this.data = data;
         this.left = left;
@@ -28,24 +28,24 @@ public class BSTNode<K, T> {
         this.key = key;
     }
 
-    public T getData() {
+    public E getData() {
         return data;
     }
-    public void setData(T data) {
+    public void setData(E data) {
         this.data = data;
     }
 
-    public BSTNode<K, T> getLeft() {
+    public BSTNode<K, E> getLeft() {
         return left;
     }
-    public void setLeft(BSTNode<K, T> left) {
+    public void setLeft(BSTNode<K, E> left) {
         this.left = left;
     }
 
-    public BSTNode<K, T> getRight() {
+    public BSTNode<K, E> getRight() {
         return right;
     }
-    public void setRight(BSTNode<K, T> right) {
+    public void setRight(BSTNode<K, E> right) {
         this.right = right;
     }
 

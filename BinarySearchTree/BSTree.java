@@ -6,24 +6,17 @@ public class BSTree <K extends Comparable<K>, E> {
         root = null;
     }
 
-    public E search(K key){
-        BSTNode<K,E> n = searchTree(root, key);
-        if(n == null){
-            return null;
-        }else{
-            return n.getData();
-        }
-    }
-    private BSTNode<K,E> searchTree(BSTNode<K,E> n, K key){
-        if(n == null)
-            return null;
-        else if(key.compareTo(n.getKey()) == 0)
-            return n;
-        else if(key.compareTo(n.getKey()) > 0)
-            return searchTree(n.getRight(), key);
-        else
-            return searchTree(n.getLeft(), key);        
-    }
+    // public T search(K key){
+    //     BSTNode<K,T> n = searchTree(root, key);
+    //     if(n == null){
+    //         return null;
+    //     }else{
+    //         return n.getData();
+    //     }
+    // }
+    // private BSTNode<K,T> searchTree(BSTNode<K,T> n, K key){
+
+    // }
 
     public void insert(K key, E data){
         BSTNode<K,E> parent = null;
@@ -69,9 +62,6 @@ public class BSTree <K extends Comparable<K>, E> {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("hello world");
-    }
     
 }
 
