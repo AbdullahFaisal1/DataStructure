@@ -37,6 +37,6 @@ public class TestBST {
         bst.insert(35, 'f');
         bst.insert(52, 'g');
 
-        inOrder(bst.getRoot());
+        //inOrder(bst.getRoot());
     }
 }
