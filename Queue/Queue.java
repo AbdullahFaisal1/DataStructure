@@ -38,7 +38,7 @@ public class Queue<T> {
         size++;
     }
 
-    public T serve() {
+    public T dequeue() {
         T val = front.data;
         front = front.next;
         size--;
@@ -58,7 +58,7 @@ public class Queue<T> {
 
     public void printQueue(){
         for(int i=0; i<length(); i++){
-            T val = serve();
+            T val = dequeue();
             System.out.print(val + " ");
             enqueue(val);
         }

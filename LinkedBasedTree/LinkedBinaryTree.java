@@ -243,7 +243,7 @@ public class LinkedBinaryTree<E> {
             Queue<LBTNode<E>> tg = new Queue<LBTNode<E>>();
             tg.enqueue(node);
             while(!tg.empty()){
-                LBTNode<E> temp = tg.serve();
+                LBTNode<E> temp = tg.dequeue();
                 if(temp != null){
                     System.out.println(temp.getItem());
 

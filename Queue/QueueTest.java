@@ -73,7 +73,7 @@ public class QueueTest {
 
     public static <T> void printQ(Queue<T> qu){
         for(int i=0; i<qu.length(); i++){
-            T val = qu.serve();
+            T val = qu.dequeue();
             System.out.print(val + " --> ");
             qu.enqueue(val);
         }
@@ -82,7 +82,7 @@ public class QueueTest {
 
     public static <T> void split(Queue<T> origanalQ, Queue<T> oddQ, Queue<T> evenQ){
         for(int i=0; i<origanalQ.length(); i++){ // or int i=1; i<=origanalQ.length(); i++
-            T val = origanalQ.serve();
+            T val = origanalQ.dequeue();
             origanalQ.enqueue(val);
 
             if(i % 2 == 0){
@@ -98,20 +98,20 @@ public class QueueTest {
         int q2Lingth = q2.length();
 
         for(int i=0; i<q2Lingth; i++){
-            q1.enqueue(q2.serve());
+            q1.enqueue(q2.dequeue());
         }
 
         for(int i=0; i<q1Lingth; i++){
-            q2.enqueue(q1.serve());
+            q2.enqueue(q1.dequeue());
         }
     }
 
     public static <T> T enquiry(Queue<T> q){
-        T data = q.serve();
+        T data = q.dequeue();
         q.enqueue(data);
 
         for(int i=0; i<q.length()-1; i++){
-            q.enqueue(q.serve());
+            q.enqueue(q.dequeue());
         }
         return data;
     }
@@ -123,7 +123,7 @@ public class QueueTest {
 
     public static<T> Queue<T> warpQueue(Queue<T> q1, int x){
         for(int i=0; i<x; i++){
-            q1.enqueue(q1.serve());
+            q1.enqueue(q1.dequeue());
         }
         return q1;
     }
@@ -132,7 +132,7 @@ public class QueueTest {
         Stack<T> s = new Stack<>();
 
         for(int i=0; i<x; i++){
-            s.push(q1.serve());
+            s.push(q1.dequeue());
         }
 
         for(int i=0; i<x; i++){
@@ -140,7 +140,7 @@ public class QueueTest {
         }
 
         for(int i=0; i<q1.length() - x; i++){
-            q1.enqueue(q1.serve());
+            q1.enqueue(q1.dequeue());
         }
         return q1;
     }
@@ -149,10 +149,10 @@ public class QueueTest {
     public static<T> void teller(Queue<T> Q1, Queue<T> Q2){
         int length1 = Q1.length();
         for(int i=0; i<length1/2; i++){
-            Q1.enqueue(Q1.serve());
+            Q1.enqueue(Q1.dequeue());
         }
         for(int i=0; i<length1/2;i++){
-            Q2.enqueue(Q1.serve());
+            Q2.enqueue(Q1.dequeue());
         }
     }
 
