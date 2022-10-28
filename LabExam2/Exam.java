@@ -45,7 +45,7 @@ public class Exam {
 
         ///// Complete the code /////
         System.out.println("\nthe product code after correcting:  ");
-        reverseProuctType(ProductCode); // Koob-1000234 //licnep-1000972
+        //wedwefreverseProuctType(ProductCode); // Koob-1000234 //licnep-1000972
         ProductCode.print();
     }
 

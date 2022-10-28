@@ -1,20 +1,9 @@
 package Queue;
-class Node<T>{
-    public T data;
-    public Node<T> next;
-    public Node(){
-        data = null;
-        next = null;
-    }
 
-    public Node(T val){
-        data = val;
-        next = null;
-    }
-}
 public class Queue<T> {
 
-    private Node<T> front, rear;
+    private Qnode<T> front;
+    private Qnode<T> rear;
     private int size;
     private int maxSize;
 
@@ -28,7 +17,7 @@ public class Queue<T> {
     }
 
     public void enqueue(T e) {
-        Node<T> temp = new Node<>(e);
+        Qnode<T> temp = new Qnode<>(e);
         if(rear == null){
             front = rear = temp;
         }else{

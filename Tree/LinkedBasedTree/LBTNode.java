@@ -70,8 +70,7 @@ public class LBTNode <E> {
 
     @Override
     public String toString() {
-        return "LBTNode [item=" + item + ", parent=" + parent + ", left=" + left + ", right=" + right + ", x=" + x
-                + ", y=" + y + "]";
+        return "LBTNode [item=" + item + ", parent=" + parent + ", left=" + left + ", right=" + right + "]";
     }
     
 
