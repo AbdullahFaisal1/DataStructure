@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-public class Node<E> {
+public class SQNode<E> {
 
     public E data;
-    public Node<E> next;
+    public SQNode<E> next;
 
-    public Node(E data, Node<E> next) {
+    public SQNode(E data, SQNode<E> next) {
         this.data = data;
         this.next = next;
     }
