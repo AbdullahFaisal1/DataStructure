@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 public class LinkedQueue<E> {
 
-    private Node<E> front; // Reference to front queue node
-    private Node<E> last; // Reference to last queue node
+    private SQNode<E> front; // Reference to front queue node
+    private SQNode<E> last; // Reference to last queue node
     private int size; // Number of elements in queue
 
     /**
@@ -37,7 +33,7 @@ public class LinkedQueue<E> {
      * Put element on last
      */
     public void enqueue(E data) {
-        Node<E> temp = new Node<E>(data, null);
+        SQNode<E> temp = new SQNode<E>(data, null);
         if (size == 0) {
             front = last = temp;
         } else {

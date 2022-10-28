@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,7 +8,7 @@
 
 public class LinkedStack<E> {
 
-    private Node<E> top;
+    private SQNode<E> top;
     private int size;
 
     public LinkedStack() {
@@ -24,7 +26,7 @@ public class LinkedStack<E> {
 
     public void push(E data) {
         // Make a new node whose next reference is the existing list
-        Node<E> newNode = new Node<>(data, top);
+        SQNode<E> newNode = new SQNode<>(data, top);
         top = newNode; // top points to new node
         size++;
     }
