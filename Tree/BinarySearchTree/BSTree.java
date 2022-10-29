@@ -2,41 +2,51 @@ package BinarySearchTree;
 
 public class BSTree <K extends Comparable<K>, E> {
     private BSTNode<K,E> root;
+
     public BSTree(){
         root = null;
     }
 
-    // public T search(K key){
-    //     BSTNode<K,T> n = searchTree(root, key);
-    //     if(n == null){
-    //         return null;
-    //     }else{
-    //         return n.getData();
-    //     }
-    // }
-    // private BSTNode<K,T> searchTree(BSTNode<K,T> n, K key){
+    public BSTNode<K,E> getRoot(){
+        return root;
+    }
 
-    // }
+    public E search(K key){
+        BSTNode<K,E> node = searchTree(root, key);
+        if(node == null)
+            return null;
+        else
+            return node.getData();   
+    }
+    private BSTNode<K,E> searchTree(BSTNode<K,E> node, K key){
+        if(node == null)
+            return null;
+        else if(key.compareTo(node.getKey()) == 0)
+            return node;   
+        else if(key.compareTo(node.getKey()) > 0)
+            return searchTree(node.getRight(), key);
+        else
+            return searchTree(node.getLeft(), key);        
+    }
 
     public void insert(K key, E data){
         BSTNode<K,E> parent = null;
-        BSTNode<K,E> trav = null;
+        BSTNode<K,E> trav = root;
         while(trav != null){
             parent = trav;
             if(parent.getKey().compareTo(key) > 0){
                 trav = trav.getLeft();
             }
-            else if(parent.getKey().compareTo(key) <= 0){
+            else if(parent.getKey().compareTo(key) < 0){
                 trav = trav.getRight();
             }
         }
         BSTNode<K,E> newNode = new BSTNode<>(key, data);
-        if(root == null){
+        if(root == null)
             root = newNode;
-        }
         else if(parent.getKey().compareTo(key) > 0)
             parent.setLeft(newNode);
-        else if(parent.getKey().compareTo(key) <= 0){
+        else if(parent.getKey().compareTo(key) < 0){
             parent.setRight(newNode);
         }    
     }
@@ -57,9 +67,34 @@ public class BSTree <K extends Comparable<K>, E> {
             return null;
         else{
             E removedData = trav.getData();
-            //deleteNode(trav, parent);
+            deleteNode(trav, parent);
             return removedData;
         }
+    }
+
+    public void deleteNode(BSTNode<K,E> toDelete, BSTNode<K,E> parent){
+            if(toDelete.getLeft() != null && toDelete.getRight() != null){
+                BSTNode<K,E> replaceParnet  = toDelete;
+                BSTNode<K,E> replace = toDelete.getRight();
+
+                toDelete.setKey(replace.getKey());
+                toDelete.setData(replace.getData());
+
+                deleteNode(replace, replaceParnet);
+            }else{
+                BSTNode<K,E> toDeleteChild;
+                if(toDelete.getLeft() != null)
+                    toDeleteChild = toDelete.getLeft();
+                else
+                    toDeleteChild = toDelete.getRight();
+
+                if(toDelete == root)
+                    root = toDeleteChild;
+                else if(toDelete.getKey().compareTo(parent.getKey()) < 0)
+                    parent.setLeft(toDeleteChild);
+                else
+                    parent.setRight(toDeleteChild);            
+            }
     }
 
     
