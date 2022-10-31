@@ -50,7 +50,7 @@ public class BSTNode<K, E> {
     }
 
     public boolean isLeaf(){
-        return (left == null) && (right == null);
+        return (left == null && right == null);
     }
 
     

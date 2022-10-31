@@ -1,9 +1,9 @@
 package BinarySearchTree;
 
-public class BSTree <K extends Comparable<K>, E> {
+public class BinarySearchTree < K extends Comparable<K>, E extends Comparable<E>> {
     private BSTNode<K,E> root;
 
-    public BSTree(){
+    public BinarySearchTree(){
         root = null;
     }
 
@@ -22,7 +22,7 @@ public class BSTree <K extends Comparable<K>, E> {
         if(node == null)
             return null;
         else if(key.compareTo(node.getKey()) == 0)
-            return node;   
+            return node;
         else if(key.compareTo(node.getKey()) > 0)
             return searchTree(node.getRight(), key);
         else
@@ -97,6 +97,27 @@ public class BSTree <K extends Comparable<K>, E> {
             }
     }
 
+    public boolean contains(E data) {
+		boolean val = contains(root, data);
+		return val;
+	}
+	private boolean contains(BSTNode<K, E> node, E data) {
+		if (node == null)
+			return false;
+
+		else if (data.compareTo(node.getData()) == 0)
+			return true;
+
+		return contains(node.getLeft(), data) || contains(node.getRight(), data);
+	}
+
+    public int numberOfLeaf(BSTNode<K,E> node){
+        if(node == null)
+            return 0;
+        if(node.isLeaf())
+            return 1;
+        return numberOfLeaf(node.getLeft()) + numberOfLeaf(node.getRight());    
+    }
     
 }
 

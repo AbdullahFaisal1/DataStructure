@@ -3,7 +3,7 @@ package BinarySearchTree;
 public class BSTtest {
     public static void main(String[] args) {
         
-        BSTree<Integer,Character> bst = new BSTree<>();
+        BinarySearchTree<Integer,Character> bst = new BinarySearchTree<>();
         bst.insert(23, 'A');
         bst.insert(18, 'B');
         bst.insert(44, 'C');
@@ -17,7 +17,8 @@ public class BSTtest {
         inOrder(bst.getRoot());
         System.out.println();
         postOrder(bst.getRoot());
-        
+        System.out.println();
+        System.out.println(bst.numberOfLeaf(bst.getRoot()));
 
 
     }
